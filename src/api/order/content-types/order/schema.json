@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customer_name": {
+      "type": "string"
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer",
+      "default": 0
+    },
+    "price": {
+      "type": "decimal",
+      "default": 0
+    },
+    "subtotal": {
+      "type": "decimal",
+      "default": 0
+    },
+    "order_date": {
+      "type": "date"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product",
+      "inversedBy": "order"
+    },
+    "order_status": {
+      "type": "enumeration",
+      "default": "Pending",
+      "enum": [
+        "Pending",
+        "Paid",
+        "Cancelled"
+      ]
+    },
+    "total_amount": {
+      "type": "decimal",
+      "default": 0
+    }
+  }
+}
